@@ -1,0 +1,26 @@
+name: Simple GitHub Actions Practical
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Project File
+        run: |
+          if [ -f index.html ]; then
+            echo "SUCCESS: index.html exists"
+          else
+            echo "ERROR: index.html not found"
+            exit 1
+          fi
+
+      - name: Display Success Message
+        run: echo "GitHub Actions workflow executed successfully!"
